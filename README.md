@@ -6,8 +6,9 @@
 |nickname|string|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :chats
+- has_many :chats
 - has_many :groups
+- has_many :groups_users
 
 ## chatsテーブル
 |Column|Type|Options|
@@ -18,25 +19,30 @@
 
 ### Association
 - belongs_to :user
+- has_many :groups
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|text|text|
+|image|text|
 |user_id|integer|null: false, foreign_key: true|
-|tweet_id|integer|null: false, foreign_key: true|
+|chats_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :chats
-- belongs_to :user
+- has_many :users
+- has_many :gourps_users
 
 ## groups_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|users_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
 - belongs_to :user
+- has_many :users, through: :groups_users
+
