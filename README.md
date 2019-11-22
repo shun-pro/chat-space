@@ -16,6 +16,7 @@
 |image|text||
 |text|text||
 |user_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -24,9 +25,7 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|
-|image|text|
-|user_id|integer|null: false, foreign_key: true|
+|groupname|string|null: false|
 
 ### Association
 - has_many :chats
