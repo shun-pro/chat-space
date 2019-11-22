@@ -1,26 +1,46 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :chats
+- has_many :groups, through: :groups_users
+- has_many :groups_users
 
-Things you may want to cover:
+## chatsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|text||
+|text|text||
+|user_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
-* Ruby version
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* System dependencies
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
 
-* Configuration
+### Association
+- has_many :chats
+- has_many :users, through: :groups_users
+- has_many :gourps_users
 
-* Database creation
+## groups_usersテーブル
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* How to run the test suite
+### Association
+- belongs_to :group
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
-
-アイウエオ
