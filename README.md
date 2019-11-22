@@ -3,7 +3,7 @@
 |------|----|-------|
 |email|string|null: false|
 |password|string|null: false|
-|nickname|string|null: false, foreign_key: true|
+|nickname|string|null: false|
 
 ### Association
 - has_many :chats
@@ -20,16 +20,16 @@
 
 ### Association
 - belongs_to :user
-- has_many :groups
+- belongs_to :group
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :chats
-- has_many :users
+- has_many :users, through: :groups_users
 - has_many :gourps_users
 
 ## groups_usersテーブル
@@ -42,5 +42,5 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
-- has_many :users, through: :groups_users
+
 
