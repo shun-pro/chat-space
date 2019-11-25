@@ -1,0 +1,32 @@
+.chat-main
+  .main-header 
+
+    .main-header__left-box 
+
+      .main-header__left-box__current-group
+        %p グループ名
+      %ul
+        %li.main-header__left-box__member-list
+          Member : 
+        %li.main-header__left-box__member-list__member
+          ユーザー名
+    .main-header__edit-btn
+      %p Edit 
+  .messages 
+    .message 
+      .message__upper-info 
+
+        .messageupper-info__talker 
+          %p 名前
+        .message__upper-info__date
+          %p 2019/11/25(mon) 15:29:27
+      .message__text 
+        %p コメント
+
+  .form
+    %form
+      %input.form__message{placeholder: "type a message"}
+      %label.input-box__image
+        = icon("fas", "image")
+        %input.hidden{type: "file"}
+    %input.form__submit{type: "submit", value: "send"}    
