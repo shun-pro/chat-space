@@ -1,0 +1,17 @@
+.chat-side
+  .side-header
+    .side-header__box 
+      .side-header__box__user-name
+        %p ユーザー名
+      %ul.side-header__box__menu
+        %li.side-header__box__menu__edit
+        =link_to icon("fa" , "edit"),"#"
+        %li.side-header__box__menu__config
+        =link_to icon("fa", "cog"),"#"
+
+  .groups 
+    .group 
+      .group__name 
+      %p グループ名
+      .group__latest-message 
+      %p コメント
