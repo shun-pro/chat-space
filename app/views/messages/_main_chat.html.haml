@@ -4,29 +4,29 @@
     .main-header__left-box 
 
       .main-header__left-box__current-group
-        %p グループ名
+        = @group.name
+        
       %ul
         %li.main-header__left-box__member-list
           Member : 
         %li.main-header__left-box__member-list__member
-          ユーザー名
+          - @group.users.each do |user|
+            = user.name
     .main-header__edit-btn
-      %p Edit 
+      = link_to "Edit", edit_group_path(@group.id) 
   .messages 
+    = render @messages
     .message 
       .message__upper-info 
-
         .messageupper-info__talker 
-          %p 名前
         .message__upper-info__date
-          %p 2019/11/25(mon) 15:29:27
       .message__text 
-        %p コメント
 
   .form
-    %form
-      %input.form__message{placeholder: "type a message"}
-      %label.input-box__image
-        = icon("fas", "image")
-        %input.hidden{type: "file"}
-    %input.form__submit{type: "submit", value: "send"}    
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form_mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
