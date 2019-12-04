@@ -1,6 +1,5 @@
-.message
+.message{data: {id: message.id}}
   .message__upper-info
-
     .message__upper-info__talker
       = message.user.name
     .message__upper-info__date
@@ -8,5 +7,9 @@
   .lower-message
     - if message.content.present?
       %p.lower-message__content
-      = message.content
+        = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+    
+   
+-# .message{data: {id: message.id}}メンターさん
+-# {"data-messege-id": message.id}自分の
